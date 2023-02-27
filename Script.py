@@ -203,7 +203,7 @@ Message <b>: {}</b>
 ©️RestinHeavenBots
 @admin"""
 
-    CAPTION = """
+    CUSTOM_FILE_CAPTION = """
 <b>📂 Fɪʟᴇ Nᴀᴍᴇ</b> : <code>{}</code>              
                        
 <b>⚙️ Fɪʟᴇ Sɪᴢᴇ</b> : <b>{}</b>"""
