@@ -2,6 +2,12 @@ import re
 from os import environ
 from Script import script 
 
+import asyncio
+import json
+from collections import defaultdict
+from typing import Dict, List, Union
+from pyrogram import Client
+
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
@@ -11,6 +17,25 @@ def is_enabled(value, default):
     else:
         return default
 
+class evamaria(Client):
+    filterstore: Dict[str, Dict[str, str]] = defaultdict(dict)
+    warndatastore: Dict[
+        str, Dict[str, Union[str, int, List[str]]]
+    ] = defaultdict(dict)
+    warnsettingsstore: Dict[str, str] = defaultdict(dict)
+
+    def __init__(self):
+        name = self.__class__.__name__.lower()
+        super().__init__(
+            ":memory:",
+            plugins=dict(root=f"{name}/plugins"),
+            workdir=TMP_DOWNLOAD_DIRECTORY,
+            api_id=APP_ID,
+            api_hash=API_HASH,
+            bot_token=BOT_TOKEN,
+            parse_mode=enums.ParseMode.HTML,
+            sleep_threshold=60
+        )
 # Bot information
 PORT = environ.get("PORT", "8000")
 SESSION = environ.get('SESSION', 'Media_search')
@@ -41,11 +66,20 @@ reqst_channel = environ.get('REQST_CHANNEL_ID')
 REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False))
+# This is required for the plugins involving the file system.
+TMP_DOWNLOAD_DIRECTORY = environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
+
+
+COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 
 # MongoDB information
 DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "PIRO")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'FILES')
+MONGO_URL = os.environ.get('MONGO_URL', "")
+
+#Downloader
+DOWNLOAD_LOCATION = environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/AudioBoT/")
 
 # Others
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
