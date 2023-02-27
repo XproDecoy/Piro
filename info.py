@@ -76,7 +76,6 @@ COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "PIRO")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'FILES')
-MONGO_URL = os.environ.get('MONGO_URL', "")
 
 #Downloader
 DOWNLOAD_LOCATION = environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/AudioBoT/")
