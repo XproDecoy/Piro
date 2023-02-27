@@ -79,7 +79,9 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'FILES')
 
 #Downloader
 DOWNLOAD_LOCATION = environ.get("DOWNLOAD_LOCATION", "./DOWNLOADS/AudioBoT/")
-
+ #help
+S_GROUP = environ.get('S_GROUP',"https://t.me/HeavenBotSupport")
+MAIN_CHANNEL = environ.get('MAIN_CHANNEL',"https://t.me/RestinHeavenBots")
 # Others
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "10")
