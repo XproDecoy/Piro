@@ -203,10 +203,12 @@ Message <b>: {}</b>
 ©️RestinHeavenBots
 @admin"""
 
-   CAPTION = """
-<b>📂 Fɪʟᴇ Nᴀᴍᴇ</b> : <code>{}</code>              
-                       
-<b>⚙️ Fɪʟᴇ Sɪᴢᴇ</b> : <b>{}</b>"""
+    CAPTION = """
+📂 <em>File Name</em>: <code>PIRO|{file_name}</code> 
+
+🖇 <em>File Size</em>: <code>{file_size}</code> 
+
+❤️‍"""
 
     IMDB_TEMPLATE_TXT = """
 <b>⍞ 𝗧𝗶𝘁𝗹𝗲</b> : <b><i><a href={url}>{title}</a></i></b><b>
